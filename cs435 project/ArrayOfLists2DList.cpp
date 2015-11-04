@@ -2,16 +2,14 @@
 #include "ListEntry.h"
 
 ArrayOfLists2DList::ArrayOfLists2DList(int rows) {
-    
-    rowHeaders = nullptr;
+
 }
 
 ArrayOfLists2DList::~ArrayOfLists2DList() {
     
 }
 
-void ArrayOfLists2DList::setRowHeaders(SLLListEntry* newHeader)
-{
+void ArrayOfLists2DList::setRowHeaders(SLLListEntry* newHeader) {
     this->rowHeaders = newHeader;
 }
 SLLListEntry* ArrayOfLists2DList::getRowHeaders(){

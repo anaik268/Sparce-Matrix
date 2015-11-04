@@ -19,6 +19,7 @@ public:
     int getValue();
     int getRow();
     int getCol();
+    ListEntry* getEntry();
 };
 
 #endif

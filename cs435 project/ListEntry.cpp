@@ -30,3 +30,8 @@ int ListEntry::getRow(){
 int ListEntry::getCol(){
     return this->col;
 }
+
+ListEntry* ListEntry::getEntry(){
+    return this;
+}
+
