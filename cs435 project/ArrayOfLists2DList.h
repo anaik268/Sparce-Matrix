@@ -7,7 +7,7 @@
 class ArrayOfLists2DList : public List2D {
 
 private:
-    SLLListEntry* rowHeaders;
+    SLLListEntry** rowHeaders;
 public:
     ArrayOfLists2DList(int);
     ~ArrayOfLists2DList();
