@@ -3,10 +3,7 @@
 
 ArrayOfLists2DList::ArrayOfLists2DList(int rows) {
     rowHeaders = new SLLListEntry*[rows]();
-//    for (int i = 0; i < rows; i++)
-//    {
-//        rowHeaders[i] = nullptr;
-//    }
+    rowHeadersSize = rows;
 }
 
 ArrayOfLists2DList::~ArrayOfLists2DList() {
@@ -32,7 +29,15 @@ bool ArrayOfLists2DList::rowEmpty(int i) {
 }
 
 bool ArrayOfLists2DList::colEmpty(int j) {
-    return false;
+    if(firstColEntry(j) != nullptr)
+    {
+        return false;
+    }
+    else
+    {
+        return true;
+    }
+
 }
 
 ListEntry* ArrayOfLists2DList::firstRowEntry(int i) {
@@ -48,18 +53,20 @@ ListEntry* ArrayOfLists2DList::firstRowEntry(int i) {
 }
 
 ListEntry* ArrayOfLists2DList::firstColEntry(int j) {
-    SLLListEntry* head = rowHeaders[0];
-    while(head->getEntry()->getCol() != j && head->getNext() != nullptr)
+    
+    for (int i = 0; i < rowHeadersSize; i++)
     {
-        head = head->getNext();
+        SLLListEntry* head = rowHeaders[i];
+        while(head != nullptr && head->getCol() < j)
+        {
+            head = head->getNext();
+        }
+        if(head->getCol() == j)
+        {
+            return head;
+        }
     }
-    if(head->getEntry()->getCol() != j)
-    {
-        return nullptr;
-    }
-    else {
-        return head;
-    }
+    return nullptr;
    
 }
 
@@ -77,8 +84,13 @@ ListEntry* ArrayOfLists2DList::nextRowEntry(ListEntry* e) {
 
 ListEntry* ArrayOfLists2DList::nextColEntry(ListEntry* e) {
     SLLListEntry * entry = dynamic_cast<SLLListEntry*>(e);
+    if(e->getRow() == rowHeadersSize-1)
+    {
+        return nullptr;
+    }
     SLLListEntry * head = rowHeaders[entry->getRow()];
-    while(head->getNext() != nullptr && head->getCol() < entry->getCol())
+    
+    while(head != nullptr && head->getCol() < entry->getCol())
     {
         head = head->getNext();
     }
@@ -86,9 +98,13 @@ ListEntry* ArrayOfLists2DList::nextColEntry(ListEntry* e) {
     {
         return head->getEntry();
     }
+    else if(head->getCol() > entry->getCol())
+    {
+        return nextColEntry(new ListEntry(0, entry->getRow()+1, entry->getCol()+1));
+    }
     else
     {
-        return (new ListEntry(0, entry->getRow()+1, entry->getCol()+1));
+        return nullptr;
     }
 }
 
@@ -106,8 +122,14 @@ bool ArrayOfLists2DList::isLastEntryInRow(ListEntry* e) {
 
 bool ArrayOfLists2DList::isLastEntryInCol(ListEntry* e) {
     SLLListEntry * entry = dynamic_cast<SLLListEntry*>(e);
-//    SLLListEntry * nextEntry = dynamic_cast<SLLListEntry*>(nextColEntry(e));
-    return false;
+    if(entry->getRow() == rowHeadersSize-1)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
 }
 void ArrayOfLists2DList::insertValueAt(int value, int i, int j) {
     SLLListEntry* newEntry = new SLLListEntry(value, i, j, nullptr);
