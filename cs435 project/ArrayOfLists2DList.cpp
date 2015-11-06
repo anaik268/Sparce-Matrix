@@ -11,13 +11,6 @@ ArrayOfLists2DList::~ArrayOfLists2DList() {
     
 }
 
-//void ArrayOfLists2DList::setRowHeaders(SLLListEntry* newHeader) {
-//    this->rowHeaders = newHeader;
-//}
-//SLLListEntry* ArrayOfLists2DList::getRowHeaders(){
-//    return this->rowHeaders;
-//}
-
 bool ArrayOfLists2DList::rowEmpty(int i) {
     if(rowHeaders[i-1] == nullptr)
     {
@@ -96,7 +89,6 @@ ListEntry* ArrayOfLists2DList::nextColEntry(ListEntry* e) {
     
     for (int i = entry->getRow(); i < rowHeadersSize; i++)
     {
-//        std::cout << i << " rowHeadersSize: " << rowHeadersSize << std::endl;
         if(rowEmpty(i+1))
         {
             continue;
@@ -112,38 +104,12 @@ ListEntry* ArrayOfLists2DList::nextColEntry(ListEntry* e) {
         }
         if(head->getCol() == entry->getCol())
         {
-//            std::cout << "row: " << head->getRow() << " col: " << head->getCol() << " value: "<< head->getValue() << std::endl;
             return head;
         }
     }
     return nullptr;
     
 }
-//ListEntry* ArrayOfLists2DList::nextColEntry(ListEntry* e) {
-//    SLLListEntry * entry = dynamic_cast<SLLListEntry*>(e);
-//    if(e->getRow() == rowHeadersSize-1)
-//    {
-//        return nullptr;
-//    }
-//    SLLListEntry * head = rowHeaders[entry->getRow()];
-//    
-//    while(head != nullptr && head->getCol() < entry->getCol())
-//    {
-//        head = head->getNext();
-//    }
-//    if(head->getCol() == entry->getCol())
-//    {
-//        return head->getEntry();
-//    }
-//    else if(head->getCol() > entry->getCol())
-//    {
-//        return nextColEntry(new ListEntry(0, entry->getRow()+1, entry->getCol()+1));
-//    }
-//    else
-//    {
-//        return nullptr;
-//    }
-//}
 
 bool ArrayOfLists2DList::isLastEntryInRow(ListEntry* e) {
     SLLListEntry * entry = dynamic_cast<SLLListEntry*>(e);
@@ -159,7 +125,7 @@ bool ArrayOfLists2DList::isLastEntryInRow(ListEntry* e) {
 
 bool ArrayOfLists2DList::isLastEntryInCol(ListEntry* e) {
     SLLListEntry * entry = dynamic_cast<SLLListEntry*>(e);
-    if(entry->getRow() == rowHeadersSize-1)
+    if(entry->getRow() == rowHeadersSize)
     {
         return true;
     }
