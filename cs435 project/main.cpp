@@ -27,26 +27,37 @@ int main(int argc, const char * argv[]) {
    
     
     
-    ListEntry* head2 = something->firstRowEntry(5);
+    ListEntry* head2 = something->firstRowEntry(4);
     
     while (head2 != nullptr)
     {
-        cout  << "value: "<< head2->getValue()<< " row: " << head2->getRow() << " col: " << head2->getCol() << endl;
-        head2 = something->nextRowEntry(head2);
+        if(something->isLastEntryInRow(head2)){
+            cout  << "value: "<< head2->getValue()<< " row: " << head2->getRow() << " col: " << head2->getCol() << " -- last row" << endl;
+            head2 = something->nextRowEntry(head2);
+        }
+        else
+        {
+            cout  << "value: "<< head2->getValue()<< " row: " << head2->getRow() << " col: " << head2->getCol() << endl;
+            head2 = something->nextRowEntry(head2);
+        }
+
     }
 
     
     cout << "\n\n now the column\n"<< endl;
-    ListEntry* head = something->firstColEntry(5);
+    ListEntry* head = something->firstColEntry(4);
     
     while (head != nullptr)
     {
-        cout << "value: "<< head->getValue()<< " row: " << head->getRow() << " col: " << head->getCol() << endl;
-        head = something->nextColEntry(head);
-    }
-    
-    if(head != nullptr){
-        cout << "value: "<< head->getValue()<< " row: " << head->getRow() << " col: " << head->getCol() << endl;
+        if(something->isLastEntryInCol(head)){
+            cout  << "value: "<< head->getValue()<< " row: " << head->getRow() << " col: " << head->getCol() << " -- last column" << endl;
+            head = something->nextColEntry(head);
+        }
+        else{
+            cout << "value: "<< head->getValue()<< " row: " << head->getRow() << " col: " << head->getCol() << endl;
+            head = something->nextColEntry(head);
+        }
+        
     }
     
     std::string sampleMatrix = "3r1c1, 5r1c4, 2r2c2, -7r2c3, 5r3c1, -3r3c2, 6r4c2, -5r4c4";

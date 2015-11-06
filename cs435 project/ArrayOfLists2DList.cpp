@@ -125,7 +125,7 @@ bool ArrayOfLists2DList::isLastEntryInRow(ListEntry* e) {
 
 bool ArrayOfLists2DList::isLastEntryInCol(ListEntry* e) {
     SLLListEntry * entry = dynamic_cast<SLLListEntry*>(e);
-    if(entry->getRow() == rowHeadersSize)
+    if(nextColEntry(e) == nullptr)
     {
         return true;
     }
