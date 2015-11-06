@@ -1,5 +1,6 @@
 #include "ArrayOfLists2DList.h"
 #include "ListEntry.h"
+#include <iostream>
 
 ArrayOfLists2DList::ArrayOfLists2DList(int rows) {
     rowHeaders = new SLLListEntry*[rows]();
@@ -56,10 +57,18 @@ ListEntry* ArrayOfLists2DList::firstColEntry(int j) {
     
     for (int i = 0; i < rowHeadersSize; i++)
     {
+        if(rowEmpty(i+1))
+        {
+            continue;
+        }
         SLLListEntry* head = rowHeaders[i];
         while(head != nullptr && head->getCol() < j)
         {
             head = head->getNext();
+        }
+        if(head == nullptr || head->getCol() > j)
+        {
+            continue;
         }
         if(head->getCol() == j)
         {
@@ -84,29 +93,57 @@ ListEntry* ArrayOfLists2DList::nextRowEntry(ListEntry* e) {
 
 ListEntry* ArrayOfLists2DList::nextColEntry(ListEntry* e) {
     SLLListEntry * entry = dynamic_cast<SLLListEntry*>(e);
-    if(e->getRow() == rowHeadersSize-1)
-    {
-        return nullptr;
-    }
-    SLLListEntry * head = rowHeaders[entry->getRow()];
     
-    while(head != nullptr && head->getCol() < entry->getCol())
+    for (int i = entry->getRow(); i < rowHeadersSize; i++)
     {
-        head = head->getNext();
+//        std::cout << i << " rowHeadersSize: " << rowHeadersSize << std::endl;
+        if(rowEmpty(i+1))
+        {
+            continue;
+        }
+        SLLListEntry* head = rowHeaders[i];
+        while(head != nullptr && head->getCol() < entry->getCol())
+        {
+            head = head->getNext();
+        }
+        if(head == nullptr || head->getCol() > entry->getCol())
+        {
+            continue;
+        }
+        if(head->getCol() == entry->getCol())
+        {
+//            std::cout << "row: " << head->getRow() << " col: " << head->getCol() << " value: "<< head->getValue() << std::endl;
+            return head;
+        }
     }
-    if(head->getCol() == entry->getCol())
-    {
-        return head->getEntry();
-    }
-    else if(head->getCol() > entry->getCol())
-    {
-        return nextColEntry(new ListEntry(0, entry->getRow()+1, entry->getCol()+1));
-    }
-    else
-    {
-        return nullptr;
-    }
+    return nullptr;
+    
 }
+//ListEntry* ArrayOfLists2DList::nextColEntry(ListEntry* e) {
+//    SLLListEntry * entry = dynamic_cast<SLLListEntry*>(e);
+//    if(e->getRow() == rowHeadersSize-1)
+//    {
+//        return nullptr;
+//    }
+//    SLLListEntry * head = rowHeaders[entry->getRow()];
+//    
+//    while(head != nullptr && head->getCol() < entry->getCol())
+//    {
+//        head = head->getNext();
+//    }
+//    if(head->getCol() == entry->getCol())
+//    {
+//        return head->getEntry();
+//    }
+//    else if(head->getCol() > entry->getCol())
+//    {
+//        return nextColEntry(new ListEntry(0, entry->getRow()+1, entry->getCol()+1));
+//    }
+//    else
+//    {
+//        return nullptr;
+//    }
+//}
 
 bool ArrayOfLists2DList::isLastEntryInRow(ListEntry* e) {
     SLLListEntry * entry = dynamic_cast<SLLListEntry*>(e);

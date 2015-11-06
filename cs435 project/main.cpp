@@ -15,6 +15,7 @@ int main(int argc, const char * argv[]) {
     // insert code here...
     std::cout << "Hello, Abhishek!\n";
     ArrayOfLists2DList* something = new ArrayOfLists2DList(6);
+    
     something->insertValueAt(1, 1, 1);
     something->insertValueAt(2, 1, 2);
     something->insertValueAt(3, 1, 3);
@@ -25,14 +26,14 @@ int main(int argc, const char * argv[]) {
     something->insertValueAt(8, 3, 3);
     something->insertValueAt(4, 4, 3);
     something->insertValueAt(7, 4, 4);
-    something->insertValueAt(2, 3, 6);
-    something->insertValueAt(4, 2, 6);
-    something->insertValueAt(2, 4, 3);
+    something->insertValueAt(2, 3, 4);
+//    something->insertValueAt(4, 2, 4);
+//    something->insertValueAt(2, 4, 3);
 //    something->insertValueAt(6, 5, 4);
 //    something->insertValueAt(9, 5, 2);
 //    something->insertValueAt(2, 5, 1);
 //    something->insertValueAt(1, 5, 3);
-    something->insertValueAt(9, 3, 1);
+    something->insertValueAt(9, 6, 3);
     
     
 //    ListEntry* head = something->firstRowEntry(2);
@@ -43,7 +44,7 @@ int main(int argc, const char * argv[]) {
 //        head = something->nextRowEntry(head);
 //    }
 
-    ListEntry* head = something->firstColEntry(3);
+    ListEntry* head = something->firstColEntry(4);
     
     while (head != nullptr)
     {
