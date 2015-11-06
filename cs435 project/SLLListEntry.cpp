@@ -12,7 +12,3 @@ SLLListEntry* SLLListEntry::getNext(){
     return this->next;
 }
 
-ListEntry* SLLListEntry::getEntry(){
-    return ListEntry::getEntry();
-}
-

@@ -12,7 +12,6 @@ public:
     SLLListEntry(int, int, int, SLLListEntry*);
     void setNext(SLLListEntry* next);
     SLLListEntry* getNext();
-    ListEntry* getEntry();
 };
 
 #endif
