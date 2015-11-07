@@ -1,4 +1,6 @@
 #include "SparseMatrix.h"
+#include "ListEntry.h"
+#include <iostream>
 
 SparseMatrix::SparseMatrix(int m, int n) {
 	this->list = new ArrayOfLists2DList(m);
@@ -16,7 +18,31 @@ SparseMatrix::~SparseMatrix() {
 }
 
 void SparseMatrix::print(){
-
+    ListEntry* head;
+    for(int i = 1; i < m; i++)
+    {
+        head = this->list->firstRowEntry(i);
+        std::cout << "| ";
+        for(int j = 1; j < n; j++)
+        {
+            if(head->getCol() == j)
+            {
+                std::cout << head->getCol() << " ";
+            }
+            else
+            {
+                if(head->getCol() > j)
+                {
+                    while (head->getCol() != j) {
+                        std::cout << "0 ";
+                        j++;
+                    }
+                }
+            }
+            head = this->list->nextRowEntry(head);
+        }
+        std::cout << "|" << std::endl;
+    }
 }
 
 bool SparseMatrix::equals(const SparseMatrix* m) const {
