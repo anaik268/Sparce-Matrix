@@ -22,8 +22,8 @@ public:
     void print();
     int getM();
     int getN();
-    void setM();
-    void setN();
+    void setM(int);
+    void setN(int);
     
 	bool equals(const SparseMatrix*) const;
 	SparseMatrix* scalarMultiply(const int) const;
@@ -32,6 +32,7 @@ public:
     SparseMatrix* multiply(const SparseMatrix*) const;
     SparseMatrix* power(const int) const;
 	SparseMatrix* transpose() const;
+    int convertToInt(std::string value);
 };
 
 #endif
