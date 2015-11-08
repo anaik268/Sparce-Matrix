@@ -5,6 +5,8 @@
 
 SparseMatrix::SparseMatrix(int m, int n) {
 	this->list = new ArrayOfLists2DList(m);
+    this->m = m;
+    this-> n = n;
     
 }
 
@@ -123,7 +125,17 @@ bool SparseMatrix::equals(const SparseMatrix* m2) const {
 }
 
 SparseMatrix* SparseMatrix::scalarMultiply(const int c) const {
-    return nullptr;
+    SparseMatrix* tempMatrix = new SparseMatrix(m, n);
+    for(int i = 1; i <= m; i++)
+    {
+        ListEntry* head = this->list->firstRowEntry(i);
+        while(head != nullptr)
+        {
+            tempMatrix->list->insertValueAt(head->getValue() * c, i, head->getCol());
+            head = this->list->nextRowEntry(head);
+        }
+    }
+    return tempMatrix;
 }
 
 SparseMatrix* SparseMatrix::add(const SparseMatrix* m2) const {
