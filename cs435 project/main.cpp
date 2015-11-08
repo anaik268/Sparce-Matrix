@@ -62,9 +62,13 @@ int main(int argc, const char * argv[]) {
 //        
 //    }
     
-    string sampleMatrix = "3r1c1,5r1c4,2r2c2,-7r2c3,5r3c1,-3r3c2,6r4c2,-5r4c4";
+    string sampleMatrix = "3r1c1,5r1c4,2r2c2,-7r2c3,5r3c1,-3r3c2,6r4c2,5r4c4";
+    string sampleMatrix2 = "3r1c1,5r1c4,2r2c2,-7r2c3,5r3c1,-3r3c2,6r4c2,5r4c4";
     SparseMatrix* test = new SparseMatrix(sampleMatrix);
     test->print();
+    SparseMatrix* test2 = new SparseMatrix(sampleMatrix2);
+    test2->print();
+    cout << "They are equal: " << test->equals(test2);
     
     
     return 0;

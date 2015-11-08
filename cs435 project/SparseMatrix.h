@@ -25,6 +25,7 @@ public:
     void setM(int);
     void setN(int);
     
+    
 	bool equals(const SparseMatrix*) const;
 	SparseMatrix* scalarMultiply(const int) const;
     SparseMatrix* add(const SparseMatrix*) const;

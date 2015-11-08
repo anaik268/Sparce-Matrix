@@ -103,12 +103,23 @@ void SparseMatrix::print(){
 }
 
 bool SparseMatrix::equals(const SparseMatrix* m2) const {
-    for(int i = 1; i < m; i++)
+    for(int i = 1; i <= m; i++)
     {
         ListEntry* head1 = this->list->firstRowEntry(i);
         ListEntry* head2 = m2->list->firstRowEntry(i);
+        
+        while(head1 != nullptr && head2 != nullptr)
+        {
+            if (head1->getValue() == head2->getValue() && head1->getCol() == head2->getCol()) {
+                head1 = this->list->nextRowEntry(head1);
+                head2 = this->list->nextRowEntry(head2);
+            }
+            else{
+                return false;
+            }
+        }
     }
-    return false;
+    return true;
 }
 
 SparseMatrix* SparseMatrix::scalarMultiply(const int c) const {
