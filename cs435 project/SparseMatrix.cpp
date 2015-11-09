@@ -263,7 +263,7 @@ SparseMatrix* SparseMatrix::subtract(const SparseMatrix* m2) const {
             head2 = m2->list->nextRowEntry(head2);
         }
     }
-    return nullptr;
+    return tempMatrix;
 }
 
 SparseMatrix* SparseMatrix::multiply(const SparseMatrix* m2) const {

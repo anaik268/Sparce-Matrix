@@ -76,7 +76,7 @@ int main(int argc, const char * argv[]) {
     addTest->print();
     
     cout << "\nthis is a subtract test:\n";
-    SparseMatrix* subtractTest = test->subtract(equalsTest);
+    SparseMatrix* subtractTest = test->subtract(scalarMultiplyTest);
     subtractTest->print();
     
     
