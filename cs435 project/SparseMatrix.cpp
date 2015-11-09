@@ -139,10 +139,130 @@ SparseMatrix* SparseMatrix::scalarMultiply(const int c) const {
 }
 
 SparseMatrix* SparseMatrix::add(const SparseMatrix* m2) const {
-    return nullptr;
+    SparseMatrix* tempMatrix = new SparseMatrix(m,n);
+    for(int i = 1; i <= m; i++)
+    {
+        ListEntry* head1 = this->list->firstRowEntry(i);
+        ListEntry* head2 = m2->list->firstRowEntry(i);
+        if(this->list->rowEmpty(i))
+        {
+            while(head2 != nullptr)
+            {
+                tempMatrix->list->insertValueAt(head2->getValue(), head2->getRow(), head2->getCol());
+                head2 = m2->list->nextRowEntry(head2);
+            }
+        }
+        if(m2->list->rowEmpty(i))
+        {
+            while(head1 != nullptr)
+            {
+                tempMatrix->list->insertValueAt(head1->getValue(), head1->getRow(), head1->getCol());
+                head1 = this->list->nextRowEntry(head1);
+            }
+        }
+        while(head1 != nullptr)
+        {
+            if(head2 != nullptr)
+            {
+                if(head2->getCol() == head1->getCol())
+                {
+                    tempMatrix->list->insertValueAt(head1->getValue() + head2->getValue(), i, head1->getCol());
+                    head1 = this->list->nextRowEntry(head1);
+                    head2 = m2->list->nextRowEntry(head2);
+                }
+                else if(head2->getCol() < head1->getCol())
+                {
+                    while(head2->getCol() < head1->getCol())
+                    {
+                        tempMatrix->list->insertValueAt(head2->getValue(), i, head2->getCol());
+                        head2 = m2->list->nextRowEntry(head2);
+                    }
+                }
+                else
+                {
+                    tempMatrix->list->insertValueAt(head1->getValue(), i, head1->getCol());
+                    head1 = this->list->nextRowEntry(head1);
+                }
+            }
+            else {
+                while(head1 != nullptr)
+                {
+                    tempMatrix->list->insertValueAt(head1->getValue(), i, head1->getCol());
+                    head1 = this->list->nextRowEntry(head1);
+                }
+            }
+        }
+        
+        while(head2 != nullptr)
+        {
+            tempMatrix->list->insertValueAt(head2->getValue(), i, head2->getCol());
+            head2 = m2->list->nextRowEntry(head2);
+        }
+    }
+    return tempMatrix;
 }
 
 SparseMatrix* SparseMatrix::subtract(const SparseMatrix* m2) const {
+    SparseMatrix* tempMatrix = new SparseMatrix(m,n);
+    for(int i = 1; i <= m; i++)
+    {
+        ListEntry* head1 = this->list->firstRowEntry(i);
+        ListEntry* head2 = m2->list->firstRowEntry(i);
+        if(this->list->rowEmpty(i))
+        {
+            while(head2 != nullptr)
+            {
+                tempMatrix->list->insertValueAt(head2->getValue() * -1, head2->getRow(), head2->getCol());
+                head2 = m2->list->nextRowEntry(head2);
+            }
+        }
+        if(m2->list->rowEmpty(i))
+        {
+            while(head1 != nullptr)
+            {
+                tempMatrix->list->insertValueAt(head1->getValue(), head1->getRow(), head1->getCol());
+                head1 = this->list->nextRowEntry(head1);
+            }
+        }
+        while(head1 != nullptr)
+        {
+            if(head2 != nullptr)
+            {
+                if(head2->getCol() == head1->getCol())
+                {
+                    tempMatrix->list->insertValueAt(head1->getValue() - head2->getValue(), i, head1->getCol());
+                    head1 = this->list->nextRowEntry(head1);
+                    head2 = m2->list->nextRowEntry(head2);
+                }
+                else if(head2->getCol() < head1->getCol())
+                {
+                    while(head2->getCol() < head1->getCol())
+                    {
+                        tempMatrix->list->insertValueAt(head2->getValue() * -1, i, head2->getCol());
+                        head2 = m2->list->nextRowEntry(head2);
+                    }
+                }
+                else
+                {
+                    tempMatrix->list->insertValueAt(head1->getValue(), i, head1->getCol());
+                    head1 = this->list->nextRowEntry(head1);
+                }
+            }
+            else {
+                while(head1 != nullptr)
+                {
+                    tempMatrix->list->insertValueAt(head1->getValue(), i, head1->getCol());
+                    head1 = this->list->nextRowEntry(head1);
+                }
+            }
+        }
+        
+        while(head2 != nullptr)
+        {
+            tempMatrix->list->insertValueAt(head2->getValue() * -1, i, head2->getCol());
+            head2 = m2->list->nextRowEntry(head2);
+        }
+    }
     return nullptr;
 }
 

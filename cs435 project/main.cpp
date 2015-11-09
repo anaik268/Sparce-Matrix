@@ -69,8 +69,15 @@ int main(int argc, const char * argv[]) {
     SparseMatrix* equalsTest = new SparseMatrix(sampleMatrix2);
     equalsTest->print();
     cout << "They are equal: " << test->equals(equalsTest) << endl;
-    SparseMatrix* scalarMultiplyTest = test->scalarMultiply(2);
+    SparseMatrix* scalarMultiplyTest = test->scalarMultiply(4);
     scalarMultiplyTest->print();
+    cout << "\nthis is a add test:\n";
+    SparseMatrix* addTest = test->add(equalsTest);
+    addTest->print();
+    
+    cout << "\nthis is a subtract test:\n";
+    SparseMatrix* subtractTest = test->subtract(equalsTest);
+    subtractTest->print();
     
     
     return 0;
