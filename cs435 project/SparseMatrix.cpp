@@ -7,7 +7,7 @@
 SparseMatrix::SparseMatrix(int m, int n) {
 	this->list = new ArrayOfLists2DList(m);
     this->m = m;
-    this-> n = n;
+    this->n = n;
     
 }
 
@@ -52,6 +52,25 @@ SparseMatrix::~SparseMatrix() {
     delete this->list;
 }
 
+List2D* SparseMatrix::getList()
+{
+    return this->list;
+}
+
+void SparseMatrix::printRowWise() {
+    ListEntry* head;
+    for(int i = 1; i < m; i++)
+    {
+        std::cout << "Row" << i << ": ";
+        head = this->list->firstRowEntry(i);
+        while(head != nullptr)
+        {
+            std::cout << head->getValue() << " ";
+            head = this->list->nextRowEntry(head);
+        }
+        std::cout << std::endl;
+    }
+}
 void SparseMatrix::print(){
     ListEntry* head;
     for(int i = 1; i <= m; i++)
