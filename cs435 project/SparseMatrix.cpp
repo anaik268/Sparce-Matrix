@@ -84,6 +84,7 @@ void SparseMatrix::print(){
             while(curCol <= n)
             {
                 std::cout << " 0";
+                curCol++;
             }
             std::cout << " |\n";
             continue;
