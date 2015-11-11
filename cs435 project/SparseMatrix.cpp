@@ -2,6 +2,7 @@
 #include "ListEntry.h"
 #include <iostream>
 #include <sstream>
+#include <vector>
 
 SparseMatrix::SparseMatrix(int m, int n) {
 	this->list = new ArrayOfLists2DList(m);
@@ -11,35 +12,40 @@ SparseMatrix::SparseMatrix(int m, int n) {
 }
 
 SparseMatrix::SparseMatrix(const string& str) {
-    this->m = 4; // TODO: determine m, n based on inputs in str
-    this->n = 4;
+    std::vector<string> eachItem;
     std::istringstream ss(str);
     std::string token;
     std::string value;
     std::string row;
     std::string col;
-    int testRow = 0;
-    int testCol = 0;
-    this->list = new ArrayOfLists2DList(m);
+
     while(std::getline(ss, token, ',')) {
+        eachItem.push_back(token);
         std::istringstream ss2(token);
         std::getline(ss2, value, 'r');
         std::getline(ss2, row, 'c');
         std::getline(ss2, col, ',');
-//        std::cout << token << '\n';
-        std::cout << "value: " << std::stoi(value) << " row: " << std::stoi(row) << " col: " << std::stoi(col) << std::endl;
-        if(testRow < std::stoi(row))
+        if(this->m < std::stoi(row))
         {
-            testRow = std::stoi(row);
+            this->m = std::stoi(row);
         }
-        if(testCol < std::stoi(col))
+        if(this->n < std::stoi(col))
         {
-            testCol = std::stoi(col);
+            this->n = std::stoi(col);
         }
+    }
+    this->list = new ArrayOfLists2DList(m);
+    for (int i = 0; i < eachItem.size(); i++)
+    {
+        token = eachItem[i];
+        std::istringstream ss2(token);
+        std::getline(ss2, value, 'r');
+        std::getline(ss2, row, 'c');
+        std::getline(ss2, col, ',');
         this->list->insertValueAt(std::stoi(value), std::stoi(row), std::stoi(col));
     }
-    std::cout << "testRow: " << testRow  << " testCol: " << testCol << std::endl;
-    this->n = testCol;
+    
+    std::cout << "\n";
 }
 
 SparseMatrix::~SparseMatrix() {
