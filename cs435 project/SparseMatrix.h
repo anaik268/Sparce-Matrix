@@ -1,7 +1,7 @@
 #ifndef SPARSEMATRIX_H
 #define SPARSEMATRIX_H
 
-#include <String>
+#include <string>
 #include "ArrayOfLists2DList.h"
 #include "ListEntry.h"
 

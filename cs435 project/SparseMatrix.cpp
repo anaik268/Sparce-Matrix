@@ -63,7 +63,7 @@ void SparseMatrix::printRowWise() {
     {
         std::cout << "Row" << i << ": ";
         head = this->list->firstRowEntry(i);
-        while(head != nullptr)
+        while(head != NULL)
         {
             std::cout << head->getValue() << " ";
             head = this->list->nextRowEntry(head);
@@ -89,7 +89,7 @@ void SparseMatrix::print(){
             std::cout << " |\n";
             continue;
         }
-        while(head != nullptr)
+        while(head != NULL)
         {
             if(this->list->isLastEntryInRow(head))
             {
@@ -136,7 +136,7 @@ bool SparseMatrix::equals(const SparseMatrix* m2) const {
         ListEntry* head1 = this->list->firstRowEntry(i);
         ListEntry* head2 = m2->list->firstRowEntry(i);
         
-        while(head1 != nullptr && head2 != nullptr)
+        while(head1 != NULL && head2 != NULL)
         {
             if (head1->getValue() == head2->getValue() && head1->getCol() == head2->getCol()) {
                 head1 = this->list->nextRowEntry(head1);
@@ -155,7 +155,7 @@ SparseMatrix* SparseMatrix::scalarMultiply(const int c) const {
     for(int i = 1; i <= m; i++)
     {
         ListEntry* head = this->list->firstRowEntry(i);
-        while(head != nullptr)
+        while(head != NULL)
         {
             tempMatrix->list->insertValueAt(head->getValue() * c, i, head->getCol());
             head = this->list->nextRowEntry(head);
@@ -172,7 +172,7 @@ SparseMatrix* SparseMatrix::add(const SparseMatrix* m2) const {
         ListEntry* head2 = m2->list->firstRowEntry(i);
         if(this->list->rowEmpty(i))
         {
-            while(head2 != nullptr)
+            while(head2 != NULL)
             {
                 tempMatrix->list->insertValueAt(head2->getValue(), head2->getRow(), head2->getCol());
                 head2 = m2->list->nextRowEntry(head2);
@@ -180,15 +180,15 @@ SparseMatrix* SparseMatrix::add(const SparseMatrix* m2) const {
         }
         if(m2->list->rowEmpty(i))
         {
-            while(head1 != nullptr)
+            while(head1 != NULL)
             {
                 tempMatrix->list->insertValueAt(head1->getValue(), head1->getRow(), head1->getCol());
                 head1 = this->list->nextRowEntry(head1);
             }
         }
-        while(head1 != nullptr)
+        while(head1 != NULL)
         {
-            if(head2 != nullptr)
+            if(head2 != NULL)
             {
                 if(head2->getCol() == head1->getCol())
                 {
@@ -211,7 +211,7 @@ SparseMatrix* SparseMatrix::add(const SparseMatrix* m2) const {
                 }
             }
             else {
-                while(head1 != nullptr)
+                while(head1 != NULL)
                 {
                     tempMatrix->list->insertValueAt(head1->getValue(), i, head1->getCol());
                     head1 = this->list->nextRowEntry(head1);
@@ -219,7 +219,7 @@ SparseMatrix* SparseMatrix::add(const SparseMatrix* m2) const {
             }
         }
         
-        while(head2 != nullptr)
+        while(head2 != NULL)
         {
             tempMatrix->list->insertValueAt(head2->getValue(), i, head2->getCol());
             head2 = m2->list->nextRowEntry(head2);
@@ -236,7 +236,7 @@ SparseMatrix* SparseMatrix::subtract(const SparseMatrix* m2) const {
         ListEntry* head2 = m2->list->firstRowEntry(i);
         if(this->list->rowEmpty(i))
         {
-            while(head2 != nullptr)
+            while(head2 != NULL)
             {
                 tempMatrix->list->insertValueAt(head2->getValue() * -1, head2->getRow(), head2->getCol());
                 head2 = m2->list->nextRowEntry(head2);
@@ -244,15 +244,15 @@ SparseMatrix* SparseMatrix::subtract(const SparseMatrix* m2) const {
         }
         if(m2->list->rowEmpty(i))
         {
-            while(head1 != nullptr)
+            while(head1 != NULL)
             {
                 tempMatrix->list->insertValueAt(head1->getValue(), head1->getRow(), head1->getCol());
                 head1 = this->list->nextRowEntry(head1);
             }
         }
-        while(head1 != nullptr)
+        while(head1 != NULL)
         {
-            if(head2 != nullptr)
+            if(head2 != NULL)
             {
                 if(head2->getCol() == head1->getCol())
                 {
@@ -275,7 +275,7 @@ SparseMatrix* SparseMatrix::subtract(const SparseMatrix* m2) const {
                 }
             }
             else {
-                while(head1 != nullptr)
+                while(head1 != NULL)
                 {
                     tempMatrix->list->insertValueAt(head1->getValue(), i, head1->getCol());
                     head1 = this->list->nextRowEntry(head1);
@@ -283,7 +283,7 @@ SparseMatrix* SparseMatrix::subtract(const SparseMatrix* m2) const {
             }
         }
         
-        while(head2 != nullptr)
+        while(head2 != NULL)
         {
             tempMatrix->list->insertValueAt(head2->getValue() * -1, i, head2->getCol());
             head2 = m2->list->nextRowEntry(head2);
@@ -293,14 +293,14 @@ SparseMatrix* SparseMatrix::subtract(const SparseMatrix* m2) const {
 }
 
 SparseMatrix* SparseMatrix::multiply(const SparseMatrix* m2) const {
-    return nullptr;
+    return NULL;
 }
 
 SparseMatrix* SparseMatrix::power(const int p) const {
-    return nullptr;
+    return NULL;
 }
 
 SparseMatrix* SparseMatrix::transpose() const {
-    return nullptr;
+    return NULL;
 }
 

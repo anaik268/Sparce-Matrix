@@ -8,64 +8,13 @@
 
 #include <iostream>
 #include <string>
+#include <ctime>
 #include "ArrayOfLists2DList.h"
 #include "SparseMatrix.h"
 
 using namespace std;
 
 int main(int argc, const char * argv[]) {
-    // insert code here...
-    ArrayOfLists2DList* something = new ArrayOfLists2DList(5);
-    
-//    something->insertValueAt(1,1,2);
-//    something->insertValueAt(2,1,3);
-//    something->insertValueAt(3,1,4);
-//    something->insertValueAt(5,2,2);
-//    something->insertValueAt(4,2,3);
-//    something->insertValueAt(6,3,1);
-//    something->insertValueAt(7,3,2);
-//    something->insertValueAt(8,3,4);
-//    something->insertValueAt(9,4,2);
-//   
-//    
-//    
-//    ListEntry* head2 = something->firstRowEntry(4);
-//    
-//    while (head2 != nullptr)
-//    {
-//        if(something->isLastEntryInRow(head2)){
-//            cout  << "value: "<< head2->getValue()<< " row: " << head2->getRow() << " col: " << head2->getCol() << " -- last row" << endl;
-//            head2 = something->nextRowEntry(head2);
-//        }
-//        else
-//        {
-//            cout  << "value: "<< head2->getValue()<< " row: " << head2->getRow() << " col: " << head2->getCol() << endl;
-//            head2 = something->nextRowEntry(head2);
-//        }
-//
-//    }
-//
-//    
-//    cout << "\n\n now the column\n"<< endl;
-//    ListEntry* head = something->firstColEntry(4);
-//    
-//    while (head != nullptr)
-//    {
-//        if(something->isLastEntryInCol(head)){
-//            cout  << "value: "<< head->getValue()<< " row: " << head->getRow() << " col: " << head->getCol() << " -- last column" << endl;
-//            head = something->nextColEntry(head);
-//        }
-//        else{
-//            cout << "value: "<< head->getValue()<< " row: " << head->getRow() << " col: " << head->getCol() << endl;
-//            head = something->nextColEntry(head);
-//        }
-//        
-//    }
-    
-//    string sampleMatrix = "3r1c1,5r1c4,2r2c2,-7r2c3,5r3c1,-3r3c2,6r4c2,5r4c4";
-//    string sampleMatrix2 = "3r1c1,5r1c4,2r2c2,-7r2c3,5r3c1,-3r3c2,6r4c2,5r4c4";
-    
-    
     //Initialization of sparseMatrix and their strings respective of the requirements set forth in instructions
     //
     string matrixAString = "3r1c1,5r1c4,2r2c2,-7r2c3,5r3c1,-3r3c2,6r4c2,-5r4c4";
@@ -92,9 +41,6 @@ int main(int argc, const char * argv[]) {
         }
     }
     
-    
-    matrixC->print();
-    
     //formulating and inserting matrix D:
     //
     for(int i = 1; i <= 6; i++)
@@ -106,8 +52,6 @@ int main(int argc, const char * argv[]) {
             }
         }
     }
-    std::cout << "\nMatrix D:\n";
-    matrixD->print();
     
     //formulating and inserting matrix D:
     //
@@ -120,8 +64,6 @@ int main(int argc, const char * argv[]) {
             }
         }
     }
-    std::cout << "\nMatrix E:\n";
-//    matrixE->print();
     
     //formulating and inserting matrix F:
     //
@@ -134,21 +76,20 @@ int main(int argc, const char * argv[]) {
             }
         }
     }
-    std::cout << "\nMatrix F:\n";
-//    matrixF->print();
+
     //formulating and inserting matrix G:
     //
-//    for(int i = 1; i <= 30000; i++)
-//    {
-//        for(int j = 1; j <= 30000; j++){
-//            if(random)%4 == 0)
-//            {
-//                matrixD->getList()->insertValueAt(i+j, i, j);
-//            }
-//        }
-//    }
-//    std::cout << "\nMatrix G:\n";
-//    matrixG->print();
+    for(int i = 1; i <= 30000; i++)
+    {
+        srand(time(0)); // use current time as seed for random generator
+        int randomNum = std::rand();
+        for(int j = 1; j <= 30000; j++){
+            if(randomNum % 100 == 0)
+            {
+                matrixD->getList()->insertValueAt(i+j, i, j);
+            }
+        }
+    }
     
 
     //Performing the tests:
