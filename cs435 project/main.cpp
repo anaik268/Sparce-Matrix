@@ -166,7 +166,78 @@ int main(int argc, const char * argv[]) {
     matrixE->printRowWise();
     cout << "\nMatrix F Row wise:" << endl;
     matrixF->printRowWise();
+    
+    //TEST 2: print each matrix itself.
+    cout << "Matrix A:" << endl;
+    matrixA->print();
+    cout << "\nMatrix B:" << endl;
+    matrixB->print();
+    cout << "\nMatrix C:" << endl;
+    matrixC->print();
+    cout << "\nMatrix D:" << endl;
+    matrixD->print();
+    cout << "\nMatrix E:" << endl;
+//    matrixE->print();
+    cout << "\nMatrix F:" << endl;
+//    matrixF->print();
+    
+    //test 3: Scalar multiply each matrix by 5
+    cout << "Matrix A multiplied by 5:" << endl;
+    matrixA->scalarMultiply(5)->print();
+    cout << "\nMatrix B multiplied by 5" << endl;
+    matrixB->scalarMultiply(5)->print();
+    cout << "\nMatrix C multiplied by 5:" << endl;
+    matrixC->scalarMultiply(5)->print();
+    cout << "\nMatrix D multiplied by 5:" << endl;
+    matrixD->scalarMultiply(5)->print();
+    cout << "\nMatrix E multiplied by 5:" << endl;
+    //    matrixE->scalarMultiply(5)->print();
+    cout << "\nMatrix F multiplied by 5:" << endl;
+    //    matrixF->scalarMultiply(5)->print();
 
+    //TEST 4: Add each matrix itself.
+    cout << "Matrix A added to itself:" << endl;
+    matrixA->add(matrixA)->print();
+    cout << "\nMatrix B added to itself:" << endl;
+    matrixB->add(matrixB)->print();
+    cout << "\nMatrix C added to itself:" << endl;
+    matrixC->add(matrixC)->print();
+    cout << "\nMatrix D added to itself:" << endl;
+    matrixD->add(matrixD)->print();
+    cout << "\nMatrix E added to itself:" << endl;
+    //    matrixE->add(matrixE)->print();
+    cout << "\nMatrix F added to itself:" << endl;
+    //    matrixF->add(matrixF)->print();
+    
+    //TEST 5: subtract each matrix itself.
+    cout << "Matrix A subtracted to itself:" << endl;
+    matrixA->subtract(matrixA)->print();
+    cout << "\nMatrix B subtracted to itself:" << endl;
+    matrixB->subtract(matrixB)->print();
+    cout << "\nMatrix C subtracted to itself:" << endl;
+    matrixC->subtract(matrixC)->print();
+    cout << "\nMatrix D subtracted to itself:" << endl;
+    matrixD->subtract(matrixD)->print();
+    cout << "\nMatrix E subtracted to itself:" << endl;
+    //    matrixE->subtract(matrixE)->print();
+    cout << "\nMatrix F subtracted to itself:" << endl;
+    //    matrixF->subtract(matrixF)->print();
+    
+    //test 6: Scalar multiply each matrix by 5 and subtract itself
+    cout << "Matrix A subtracted from itself multiplied by 5:" << endl;
+    matrixA->scalarMultiply(5)->subtract(matrixA)->print();
+    cout << "\nMatrix B subtracted from itself multiplied by 5" << endl;
+    matrixB->scalarMultiply(5)->subtract(matrixB)->print();
+    cout << "\nMatrix C subtracted from itself multiplied by 5:" << endl;
+    matrixC->scalarMultiply(5)->subtract(matrixC)->print();
+    cout << "\nMatrix D subtracted from itself multiplied by 5:" << endl;
+    matrixD->scalarMultiply(5)->subtract(matrixD)->print();
+    cout << "\nMatrix E subtracted from itself multiplied by 5:" << endl;
+    //    matrixE->scalarMultiply(5)->subtract(matrixE)->print();
+    cout << "\nMatrix F subtracted from itself multiplied by 5:" << endl;
+    //    matrixF->scalarMultiply(5)->subtract(matrixF)->print();
+
+    
     
     return 0;
 }

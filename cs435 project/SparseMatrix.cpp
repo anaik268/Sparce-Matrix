@@ -59,7 +59,7 @@ List2D* SparseMatrix::getList()
 
 void SparseMatrix::printRowWise() {
     ListEntry* head;
-    for(int i = 1; i < m; i++)
+    for(int i = 1; i <= m; i++)
     {
         std::cout << "Row" << i << ": ";
         head = this->list->firstRowEntry(i);
