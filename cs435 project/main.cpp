@@ -108,7 +108,7 @@ int main(int argc, const char * argv[]) {
     cout << "\nMatrix F Row wise:" << endl;
     matrixF->printRowWise();
     cout << "\nMatrix G Row wise:" << endl;
-//    matrixG->printRowWise();
+    matrixG->printRowWise();
     
     //TEST 2: print each matrix itself.
     cout << "Matrix A:" << endl;
@@ -124,7 +124,7 @@ int main(int argc, const char * argv[]) {
     cout << "\nMatrix F:" << endl;
     matrixF->print();
     cout << "\nMatrix G:" << endl;
-//    matrixG->print();
+    matrixG->print();
     
     //test 3: Scalar multiply each matrix by 5
     cout << "Matrix A multiplied by 5:" << endl;
@@ -140,7 +140,7 @@ int main(int argc, const char * argv[]) {
     cout << "\nMatrix F multiplied by 5:" << endl;
     matrixF->scalarMultiply(5)->print();
     cout << "\nMatrix G multiplied by 5:" << endl;
-//    matrixG->scalarMultiply(5)->print();
+    matrixG->scalarMultiply(5)->print();
 
     //TEST 4: Add each matrix itself.
     cout << "Matrix A added to itself:" << endl;
@@ -156,7 +156,7 @@ int main(int argc, const char * argv[]) {
     cout << "\nMatrix F added to itself:" << endl;
     matrixF->add(matrixF)->print();
     cout << "\nMatrix G added to itself:" << endl;
-//    matrixG->add(matrixG)->print();
+    matrixG->add(matrixG)->print();
     
     //TEST 5: subtract each matrix itself.
     cout << "Matrix A subtracted to itself:" << endl;
@@ -172,7 +172,7 @@ int main(int argc, const char * argv[]) {
     cout << "\nMatrix F subtracted to itself:" << endl;
     matrixF->subtract(matrixF)->print();
     cout << "\nMatrix G subtracted to itself:" << endl;
-//    matrixG->subtract(matrixG)->print();
+    matrixG->subtract(matrixG)->print();
     
     //test 6: Scalar multiply each matrix by 5 and subtract itself
     cout << "Matrix A subtracted from itself multiplied by 5:" << endl;
@@ -188,7 +188,7 @@ int main(int argc, const char * argv[]) {
     cout << "\nMatrix F subtracted from itself multiplied by 5:" << endl;
     matrixF->scalarMultiply(5)->subtract(matrixF)->print();
     cout << "\nMatrix G subtracted from itself multiplied by 5:" << endl;
-//    matrixG->scalarMultiply(5)->subtract(matrixG)->print();
+    matrixG->scalarMultiply(5)->subtract(matrixG)->print();
     
 
     

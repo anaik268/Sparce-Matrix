@@ -21,6 +21,7 @@ public:
 
     void print();
     void printRowWise();
+    void printBiggerMatrix(int);
     int getM();
     int getN();
     void setM(int);

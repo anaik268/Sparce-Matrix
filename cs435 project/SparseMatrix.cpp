@@ -61,6 +61,11 @@ void SparseMatrix::printRowWise() {
     ListEntry* head;
     for(int i = 1; i <= m; i++)
     {
+        if(m > 6 && i == 4)
+        {
+            i = m-3;
+            continue;
+        }
         std::cout << "Row" << i << ": ";
         head = this->list->firstRowEntry(i);
         while(head != NULL)
@@ -75,6 +80,12 @@ void SparseMatrix::print(){
     ListEntry* head;
     for(int i = 1; i <= m; i++)
     {
+        if(m > 6 && i == 4)
+        {
+            std::cout << "    ......." << std::endl;
+            i = m-3;
+            continue;
+        }
         int curCol = 1;
         head = this->list->firstRowEntry(i);
         std::cout << "|";
@@ -83,14 +94,29 @@ void SparseMatrix::print(){
         {
             while(curCol <= n)
             {
-                std::cout << " 0";
-                curCol++;
+                if(n > 6 && curCol == 4)
+                {
+                    std::cout << " ...";
+                    curCol = n-2;
+                    continue;
+                }
+                else {
+                    std::cout << " 0";
+                    curCol++;
+                }
+                
             }
             std::cout << " |\n";
             continue;
         }
         while(head != NULL)
         {
+            if(n > 6 && curCol == 4)
+            {
+                std::cout << " ...";
+                curCol = n-2;
+                continue;
+            }
             if(this->list->isLastEntryInRow(head))
             {
                 while(curCol < head->getCol())
@@ -118,12 +144,17 @@ void SparseMatrix::print(){
                 curCol++;
                 head = this->list->nextRowEntry(head);
             }
+            else if(curCol > head->getCol())
+            {
+                head = this->list->nextRowEntry(head);
+            }
             else
             {
                 std::cout << " " << head->getValue();
                 curCol++;
                 head = this->list->nextRowEntry(head);
             }
+            
         }
 
         std::cout << " |" << std::endl;
