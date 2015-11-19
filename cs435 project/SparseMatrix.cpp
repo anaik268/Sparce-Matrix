@@ -324,10 +324,44 @@ SparseMatrix* SparseMatrix::subtract(const SparseMatrix* m2) const {
 }
 
 SparseMatrix* SparseMatrix::multiply(const SparseMatrix* m2) const {
-    return NULL;
+    SparseMatrix* tempMatrix = new SparseMatrix(m,n);
+    ListEntry* head1;
+    ListEntry* head2;
+    for (int i = 1; i <= m; i++)
+    {
+        for (int j = 1; j <= m2->n; j++)
+        {
+            head1 = this->list->firstRowEntry(i);
+            head2 = m2->list->firstColEntry(j);
+            int sum = 0;
+            
+            while(head2 != NULL && head1 != NULL)
+            {
+                if(head1->getCol() == head2->getRow())
+                {
+                    sum += head1->getValue() * head2->getValue();
+                    head2 = m2->list->nextColEntry(head2);
+                    head1 = this->list->nextRowEntry(head1);
+                }
+                else if(head1->getCol() < head2->getRow())
+                {
+                    head1 = this->list->nextRowEntry(head1);
+                }
+                else if(head2->getRow() < head1->getCol())
+                {
+                    head2 = m2->list->nextColEntry(head2);
+                }
+            }
+            tempMatrix->list->insertValueAt(sum, i, j);
+        }
+    }
+    return tempMatrix;
 }
 
 SparseMatrix* SparseMatrix::power(const int p) const {
+    SparseMatrix* tempMatrix = new SparseMatrix(m, n);
+    
+    
     return NULL;
 }
 

@@ -86,12 +86,12 @@ int main(int argc, const char * argv[]) {
         for(int j = 1; j <= 30000; j++){
             if(randomNum % 100 == 0)
             {
-                matrixD->getList()->insertValueAt(i+j, i, j);
+                matrixG->getList()->insertValueAt(i+j, i, j);
             }
         }
     }
     
-
+/*
     //Performing the tests:
     //
     //TEST 1: print each value rowWise
@@ -189,9 +189,11 @@ int main(int argc, const char * argv[]) {
     matrixF->scalarMultiply(5)->subtract(matrixF)->print();
     cout << "\nMatrix G subtracted from itself multiplied by 5:" << endl;
     matrixG->scalarMultiply(5)->subtract(matrixG)->print();
-    
+    cout << endl;
 
+    */
     
-    
+    cout << "Matrix A multiplied by A:" << endl;
+    matrixA->multiply(matrixA)->print();
     return 0;
 }
