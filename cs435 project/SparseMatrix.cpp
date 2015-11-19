@@ -57,6 +57,17 @@ List2D* SparseMatrix::getList()
     return this->list;
 }
 
+int SparseMatrix::raiseTo(const int value, const int power) const
+{
+//    if(power == 1)
+//    {
+//        return 
+//    }
+    int result = 1;
+    for (int i = 0; i < power; i++)
+        result *= value;
+    return result;
+}
 void SparseMatrix::printRowWise() {
     ListEntry* head;
     for(int i = 1; i <= m; i++)
@@ -360,12 +371,37 @@ SparseMatrix* SparseMatrix::multiply(const SparseMatrix* m2) const {
 
 SparseMatrix* SparseMatrix::power(const int p) const {
     SparseMatrix* tempMatrix = new SparseMatrix(m, n);
+    ListEntry* head;
+    for(int i = 1; i <= m; i++)
+    {
+        head = this->list->firstRowEntry(i);
+        while(head != NULL)
+        {
+            int num = raiseTo(head->getValue(), p);
+            tempMatrix->list->insertValueAt(num, head->getRow(), head->getCol());
+            head = this->list->nextRowEntry(head);
+        }
+        
+        
+    }
     
-    
-    return NULL;
+    return tempMatrix;
 }
 
 SparseMatrix* SparseMatrix::transpose() const {
-    return NULL;
+    SparseMatrix* tempMatrix = new SparseMatrix(n,m);
+    ListEntry* head;
+    for(int i = 1; i <= m; i++)
+    {
+        head = this->list->firstRowEntry(i);
+        while(head != NULL)
+        {
+            tempMatrix->list->insertValueAt(head->getValue(), head->getCol(), head->getRow());
+            head = this->list->nextRowEntry(head);
+        }
+        
+    }
+    
+    return tempMatrix;
 }
 

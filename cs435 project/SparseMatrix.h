@@ -34,7 +34,7 @@ public:
     SparseMatrix* multiply(const SparseMatrix*) const;
     SparseMatrix* power(const int) const;
 	SparseMatrix* transpose() const;
-    int convertToInt(std::string value);
+    int raiseTo(const int, const int) const;
     List2D* getList();
 };
 
