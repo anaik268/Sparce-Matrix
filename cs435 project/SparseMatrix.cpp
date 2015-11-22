@@ -146,10 +146,15 @@ void SparseMatrix::print(){
             }
             else if(curCol < head->getCol())
             {
-                while(curCol < head->getCol())
+                while(curCol < head->getCol() && curCol != 3)
                 {
                     std::cout << " 0";
                     curCol++;
+                }
+                if(curCol == 3)
+                {
+                    curCol++;
+                    continue;
                 }
                 std::cout << " " << head->getValue();
                 curCol++;
@@ -335,7 +340,7 @@ SparseMatrix* SparseMatrix::subtract(const SparseMatrix* m2) const {
 }
 
 SparseMatrix* SparseMatrix::multiply(const SparseMatrix* m2) const {
-    SparseMatrix* tempMatrix = new SparseMatrix(m,n);
+    SparseMatrix* tempMatrix = new SparseMatrix(m,m2->n);
     ListEntry* head1;
     ListEntry* head2;
     for (int i = 1; i <= m; i++)
@@ -363,7 +368,11 @@ SparseMatrix* SparseMatrix::multiply(const SparseMatrix* m2) const {
                     head2 = m2->list->nextColEntry(head2);
                 }
             }
-            tempMatrix->list->insertValueAt(sum, i, j);
+            if (sum != 0)
+            {
+                tempMatrix->list->insertValueAt(sum, i, j);
+            }
+            
         }
     }
     return tempMatrix;

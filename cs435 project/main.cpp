@@ -17,8 +17,7 @@ using namespace std;
 int main(int argc, const char * argv[]) {
     //Initialization of sparseMatrix and their strings respective of the requirements set forth in instructions
     //
-//    string matrixAString = "3r1c1,5r1c4,2r2c2,-7r2c3,5r3c1,-3r3c2,6r4c2,-5r4c4";
-    string matrixAString = "1r1c1,2r1c2,3r2c1,4r2c2,5r3c1,6r3c2";
+    string matrixAString = "3r1c1,5r1c4,2r2c2,-7r2c3,5r3c1,-3r3c2,6r4c2,-5r4c4";
     string matrixBString = "1r1c1,1r1c5,1r2c2,1r2c6,1r3c3,1r4c1,1r4c4";
     
     SparseMatrix* matrixA = new SparseMatrix(matrixAString);
@@ -92,7 +91,7 @@ int main(int argc, const char * argv[]) {
         }
     }
     
-/*
+
     //Performing the tests:
     //
     //TEST 1: print each value rowWise
@@ -192,7 +191,7 @@ int main(int argc, const char * argv[]) {
     matrixG->scalarMultiply(5)->subtract(matrixG)->print();
     cout << endl;
 
-    */
+    
     
     cout << "Matrix A multiplied by A:" << endl;
     matrixA->multiply(matrixA)->print();
@@ -202,5 +201,66 @@ int main(int argc, const char * argv[]) {
     matrixA->power(5)->print();
     cout << endl;
     matrixA->transpose()->print();
+    
+//    Multiply Matrix A with itself, Matrix E with itself, and Matrix G with itself.
+    cout << "Multiply matrix A with itself:" << endl;
+    matrixA->multiply(matrixA)->print();
+    cout << "Multiply matrix E with itself:" << endl;
+    matrixE->multiply(matrixE)->print();
+    
+//    For Matrices A, E, and G raise each matrix to the power of 5, 25, 100 using power(). Print the result for each.
+    cout << "Matrix A raised to power 5:" << endl;
+    matrixA->power(5)->print();
+    cout << "Matrix E raised to power 5:" << endl;
+    matrixE->power(5)->print();
+    cout << "Matrix G raised to power 5:" << endl;
+    matrixG->power(5)->print();
+    cout << "Matrix A raised to power 25:" << endl;
+    matrixA->power(25)->print();
+    cout << "Matrix E raised to power 25:" << endl;
+    matrixE->power(25)->print();
+    cout << "Matrix G raised to power 25:" << endl;
+    matrixG->power(25)->print();
+    cout << "Matrix A raised to power 100:" << endl;
+    matrixA->power(100)->print();
+    cout << "Matrix E raised to power 100:" << endl;
+    matrixE->power(100)->print();
+    cout << "Matrix G raised to power 100:" << endl;
+    matrixG->power(100)->print();
+    
+//   Compute the transpose of each matrix and print the result.
+    cout << "Matrix A transposed:" << endl;
+    matrixA->transpose()->print();
+    cout << "Matrix B transposed:" << endl;
+    matrixB->transpose()->print();
+    cout << "Matrix C transposed:" << endl;
+    matrixC->transpose()->print();
+    cout << "Matrix D transposed:" << endl;
+    matrixD->transpose()->print();
+    cout << "Matrix E transposed:" << endl;
+    matrixE->transpose()->print();
+    cout << "Matrix F transposed:" << endl;
+    matrixF->transpose()->print();
+    cout << "Matrix G transposed:" << endl;
+    matrixG->transpose()->print();
+    cout << endl;
+    
+//    Multiply each matrix with its transpose and its transpose with itself. Print the result for each.
+    cout << "Matrix A transposed and multiplied with itself:" << endl;
+    matrixA->multiply(matrixA->transpose())->print();
+    cout << "Matrix B transposed and multiplied with itself:" << endl;
+    matrixB->multiply(matrixB->transpose())->print();
+    cout << "Matrix C transposed and multiplied with itself:" << endl;
+    matrixC->multiply(matrixC->transpose())->print();
+    cout << "Matrix D transposed and multiplied with itself:" << endl;
+    matrixD->multiply(matrixD->transpose())->print();
+    cout << "Matrix E transposed and multiplied with itself:" << endl;
+    matrixE->multiply(matrixE->transpose())->print();
+
+    matrixF->transpose()->print();
+    cout << endl;
+    cout << "Matrix F transposed and multiplied with itself:" << endl;
+    matrixF->multiply(matrixF->transpose())->print();
+
     return 0;
 }
