@@ -57,6 +57,16 @@ List2D* SparseMatrix::getList()
     return this->list;
 }
 
+int SparseMatrix::getM() const
+{
+    return this->m;
+}
+
+int SparseMatrix::getN() const
+{
+    return this->n;
+}
+
 int SparseMatrix::raiseTo(const int value, const int power) const
 {
 //    if(power == 1)
@@ -153,6 +163,7 @@ void SparseMatrix::print(){
                 }
                 if(curCol == 3)
                 {
+                    std::cout << " 0";
                     curCol++;
                     continue;
                 }
@@ -178,6 +189,11 @@ void SparseMatrix::print(){
 }
 
 bool SparseMatrix::equals(const SparseMatrix* m2) const {
+    if(m != m2->getM() || n != m2->getN())
+    {
+        return false;
+        
+    }
     for(int i = 1; i <= m; i++)
     {
         ListEntry* head1 = this->list->firstRowEntry(i);
@@ -185,6 +201,14 @@ bool SparseMatrix::equals(const SparseMatrix* m2) const {
         
         while(head1 != NULL && head2 != NULL)
         {
+            if(head1->getCol() > head2->getCol())
+            {
+                return false;
+            }
+            if(head1->getCol() < head2->getCol())
+            {
+                return false;
+            }
             if (head1->getValue() == head2->getValue() && head1->getCol() == head2->getCol()) {
                 head1 = this->list->nextRowEntry(head1);
                 head2 = this->list->nextRowEntry(head2);

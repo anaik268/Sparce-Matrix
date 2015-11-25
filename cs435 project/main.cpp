@@ -141,6 +141,43 @@ int main(int argc, const char * argv[]) {
     matrixF->scalarMultiply(5)->print();
     cout << "\nMatrix G multiplied by 5:" << endl;
     matrixG->scalarMultiply(5)->print();
+    
+    //TEST 4: Apply equals pairwise matrix A-g
+    cout << "Matrix A equals Matrix A: " << matrixA->equals(matrixA) << endl;
+    cout << "Matrix A equals Matrix B: " << matrixA->equals(matrixB) << endl;
+    cout << "Matrix A equals Matrix C: " << matrixA->equals(matrixC) << endl;
+    cout << "Matrix A equals Matrix D: " << matrixA->equals(matrixD) << endl;
+    cout << "Matrix A equals Matrix E: " << matrixA->equals(matrixE) << endl;
+    cout << "Matrix A equals Matrix F: " << matrixA->equals(matrixF) << endl;
+    cout << "Matrix A equals Matrix G: " << matrixA->equals(matrixG) << endl;
+    
+    cout << "Matrix B equals Matrix B: " << matrixB->equals(matrixB) << endl;
+    cout << "Matrix B equals Matrix C: " << matrixB->equals(matrixC) << endl;
+    cout << "Matrix B equals Matrix D: " << matrixB->equals(matrixD) << endl;
+    cout << "Matrix B equals Matrix E: " << matrixB->equals(matrixE) << endl;
+    cout << "Matrix B equals Matrix F: " << matrixB->equals(matrixF) << endl;
+    cout << "Matrix B equals Matrix G: " << matrixB->equals(matrixG) << endl;
+    
+    cout << "Matrix C equals Matrix C: " << matrixC->equals(matrixC) << endl;
+    cout << "Matrix C equals Matrix D: " << matrixC->equals(matrixD) << endl;
+    cout << "Matrix C equals Matrix E: " << matrixC->equals(matrixE) << endl;
+    cout << "Matrix C equals Matrix F: " << matrixC->equals(matrixF) << endl;
+    cout << "Matrix C equals Matrix G: " << matrixC->equals(matrixG) << endl;
+    
+    cout << "Matrix D equals Matrix D: " << matrixD->equals(matrixD) << endl;
+    cout << "Matrix D equals Matrix E: " << matrixD->equals(matrixE) << endl;
+    cout << "Matrix D equals Matrix F: " << matrixD->equals(matrixF) << endl;
+    cout << "Matrix D equals Matrix G: " << matrixD->equals(matrixG) << endl;
+    
+    cout << "Matrix E equals Matrix E: " << matrixE->equals(matrixE) << endl;
+    cout << "Matrix E equals Matrix F: " << matrixE->equals(matrixF) << endl;
+    cout << "Matrix E equals Matrix G: " << matrixE->equals(matrixG) << endl;
+    
+    cout << "Matrix F equals Matrix F: " << matrixF->equals(matrixF) << endl;
+    cout << "Matrix F equals Matrix G: " << matrixF->equals(matrixG) << endl;
+    
+    cout << "Matrix G equals Matrix G: " << matrixG->equals(matrixG) << endl;
+    
 
     //TEST 4: Add each matrix itself.
     cout << "Matrix A added to itself:" << endl;
@@ -192,15 +229,6 @@ int main(int argc, const char * argv[]) {
     cout << endl;
 
     
-    
-    cout << "Matrix A multiplied by A:" << endl;
-    matrixA->multiply(matrixA)->print();
-    cout << endl;
-    matrixA->print();
-    cout << endl;
-    matrixA->power(5)->print();
-    cout << endl;
-    matrixA->transpose()->print();
     
 //    Multiply Matrix A with itself, Matrix E with itself, and Matrix G with itself.
     cout << "Multiply matrix A with itself:" << endl;

@@ -21,8 +21,6 @@ public:
 
     void print();
     void printRowWise();
-    int getM();
-    int getN();
     void setM(int);
     void setN(int);
     
@@ -35,7 +33,10 @@ public:
     SparseMatrix* power(const int) const;
 	SparseMatrix* transpose() const;
     int raiseTo(const int, const int) const;
+    int getM() const;
+    int getN() const;
     List2D* getList();
+    
 };
 
 #endif
