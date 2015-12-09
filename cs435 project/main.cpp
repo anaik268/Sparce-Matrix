@@ -240,20 +240,20 @@ int main(int argc, const char * argv[]) {
     matrixA->power(5)->print();
     cout << "Matrix E raised to power 5:" << endl;
     matrixE->power(5)->print();
-    cout << "Matrix G raised to power 5:" << endl;
-    matrixG->power(5)->print();
+//    cout << "Matrix G raised to power 5:" << endl;
+//    matrixG->power(5)->print();
     cout << "Matrix A raised to power 25:" << endl;
     matrixA->power(25)->print();
     cout << "Matrix E raised to power 25:" << endl;
     matrixE->power(25)->print();
-    cout << "Matrix G raised to power 25:" << endl;
-    matrixG->power(25)->print();
+//    cout << "Matrix G raised to power 25:" << endl;
+//    matrixG->power(25)->print();
     cout << "Matrix A raised to power 100:" << endl;
     matrixA->power(100)->print();
-    cout << "Matrix E raised to power 100:" << endl;
-    matrixE->power(100)->print();
-    cout << "Matrix G raised to power 100:" << endl;
-    matrixG->power(100)->print();
+//    cout << "Matrix E raised to power 100:" << endl;
+//    matrixE->power(100)->print();
+//    cout << "Matrix G raised to power 100:" << endl;
+//    matrixG->power(100)->print();
     
 //   Compute the transpose of each matrix and print the result.
     cout << "Matrix A transposed:" << endl;
@@ -289,5 +289,8 @@ int main(int argc, const char * argv[]) {
     cout << "Matrix F transposed and multiplied with itself:" << endl;
     matrixF->multiply(matrixF->transpose())->print();
 
+    cout << "Matrix A raised to power 15:" << endl;
+    matrixA->power(15)->print();
+    
     return 0;
 }

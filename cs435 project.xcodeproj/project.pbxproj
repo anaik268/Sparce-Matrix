@@ -12,7 +12,7 @@
 		0525403D1BE571400024C795 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 052540361BE571400024C795 /* main.cpp */; };
 		0525403E1BE571400024C795 /* SLLListEntry.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 052540371BE571400024C795 /* SLLListEntry.cpp */; };
 		0525403F1BE571400024C795 /* SparseMatrix.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 052540391BE571400024C795 /* SparseMatrix.cpp */; };
-		05E2A3111C148B1D00B6231E /* Array2DList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 05E2A3101C148B1D00B6231E /* Array2DList.cpp */; };
+		0570AD751C17A9CF00D5A152 /* Array2DList.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0570AD741C17A9CF00D5A152 /* Array2DList.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -39,8 +39,8 @@
 		052540381BE571400024C795 /* SLLListEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SLLListEntry.h; sourceTree = "<group>"; };
 		052540391BE571400024C795 /* SparseMatrix.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SparseMatrix.cpp; sourceTree = "<group>"; };
 		0525403A1BE571400024C795 /* SparseMatrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SparseMatrix.h; sourceTree = "<group>"; };
+		0570AD741C17A9CF00D5A152 /* Array2DList.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Array2DList.cpp; sourceTree = "<group>"; };
 		05E2A30F1C148B1400B6231E /* Array2DList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Array2DList.h; sourceTree = "<group>"; };
-		05E2A3101C148B1D00B6231E /* Array2DList.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Array2DList.cpp; path = ../Array2DList.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,8 +73,8 @@
 		052540291BE43EA10024C795 /* cs435 project */ = {
 			isa = PBXGroup;
 			children = (
+				0570AD741C17A9CF00D5A152 /* Array2DList.cpp */,
 				05E2A30F1C148B1400B6231E /* Array2DList.h */,
-				05E2A3101C148B1D00B6231E /* Array2DList.cpp */,
 				052540311BE571400024C795 /* ArrayOfLists2DList.cpp */,
 				052540331BE571400024C795 /* List2D.h */,
 				052540321BE571400024C795 /* ArrayOfLists2DList.h */,
@@ -150,7 +150,7 @@
 				0525403E1BE571400024C795 /* SLLListEntry.cpp in Sources */,
 				0525403F1BE571400024C795 /* SparseMatrix.cpp in Sources */,
 				0525403D1BE571400024C795 /* main.cpp in Sources */,
-				05E2A3111C148B1D00B6231E /* Array2DList.cpp in Sources */,
+				0570AD751C17A9CF00D5A152 /* Array2DList.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

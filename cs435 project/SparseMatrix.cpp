@@ -489,24 +489,55 @@ SparseMatrix* SparseMatrix::multiply(const SparseMatrix* m2) const {
     return tempMatrix;
 }
 
+/*
+ if (n == 0)
+ return 1.0;
+ if (n % 2 == 1) // n is odd
+ {
+ double y = rpow2(x, (n - 1) / 2);
+ return x * y * y;
+ } else {
+ double y = rpow2(x, n / 2);
+ return y * y;
+ }
+ */
 SparseMatrix* SparseMatrix::power(const int p) const {
-    SparseMatrix* tempMatrix = new SparseMatrix(m, n);
-    ListEntry* head;
-    for(int i = 1; i <= m; i++)
+    SparseMatrix* curMatrix = new SparseMatrix(m, n);
+    curMatrix->list = this->list;
+    SparseMatrix* result;
+    if(p ==1)
     {
-        head = this->list->firstRowEntry(i);
-        while(head != NULL)
-        {
-            int num = raiseTo(head->getValue(), p);
-            tempMatrix->list->insertValueAt(num, head->getRow(), head->getCol());
-            head = this->list->nextRowEntry(head);
-        }
-        
-        
+        return curMatrix;
     }
     
-    return tempMatrix;
+    if(p % 2 == 1) //p is odd
+    {
+        SparseMatrix* oddMatrix = power((p-1)/2);
+        result = curMatrix->multiply(oddMatrix->multiply(oddMatrix));
+    }
+    else
+    {
+        SparseMatrix* oddMatrix = power(p/2);
+        result = oddMatrix->multiply(oddMatrix);
+    }
+    
+    
+    return result;
 }
+/*
+SparseMatrix* SparseMatrix::power(const int p) const {
+    SparseMatrix* tempMatrix = new SparseMatrix(m, n);
+    SparseMatrix* result = new SparseMatrix(m, n);
+    result->list = this->list;
+    tempMatrix->list = this->list;
+    for(int i = 1; i < p; i++)
+    {
+        result = result->multiply(tempMatrix);
+    }
+    
+    return result;
+}
+ */
 
 SparseMatrix* SparseMatrix::transpose() const {
     SparseMatrix* tempMatrix = new SparseMatrix(n,m);
