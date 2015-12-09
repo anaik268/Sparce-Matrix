@@ -22,7 +22,6 @@ int main(int argc, const char * argv[]) {
     
     SparseMatrix* matrixA = new SparseMatrix(matrixAString);
     SparseMatrix* matrixB = new SparseMatrix(matrixBString);
-    
     SparseMatrix* matrixC = new SparseMatrix(5,6);
     SparseMatrix* matrixD = new SparseMatrix(6,5);
     SparseMatrix* matrixE = new SparseMatrix(200, 200);
