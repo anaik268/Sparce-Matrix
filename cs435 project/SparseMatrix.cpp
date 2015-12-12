@@ -251,6 +251,10 @@ void SparseMatrix::print(){
             {
                 while(curCol < head->getCol())
                 {
+                    if(curCol == 3)
+                    {
+                        break;
+                    }
                     std::cout << " 0";
                     curCol++;
                 }
@@ -274,6 +278,7 @@ void SparseMatrix::print(){
         std::cout << " |" << std::endl;
     }
 }
+
 
 bool SparseMatrix::equals(const SparseMatrix* m2) const {
     if(m != m2->getM() || n != m2->getN())

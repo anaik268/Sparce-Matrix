@@ -1,12 +1,9 @@
 #include "Array2DList.h"
-/*
+
 Array2DList::Array2DList(int rows) {
 	// TODO: init rowHeaders
     
-    for(int i = 0; i < rows; i++)
-    {
-        
-    }
+    
 }
 
 Array2DList::~Array2DList() {
@@ -48,7 +45,3 @@ bool ListEntry* Array2DList::isLastEntryInCol(const ListEntry* e) {
 void Array2DList::insertValueAt(int value, int i, int j) {
 
 }
-
-
-
-*/

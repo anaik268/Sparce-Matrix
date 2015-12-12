@@ -234,6 +234,9 @@ int main(int argc, const char * argv[]) {
     matrixA->multiply(matrixA)->print();
     cout << "Multiply matrix E with itself:" << endl;
     matrixE->multiply(matrixE)->print();
+//    cout << "Multiply matrix G with itself:" << endl;
+//    matrixG->multiply(matrixG)->print();
+    
     
 //    For Matrices A, E, and G raise each matrix to the power of 5, 25, 100 using power(). Print the result for each.
     cout << "Matrix A raised to power 5:" << endl;
@@ -289,8 +292,8 @@ int main(int argc, const char * argv[]) {
     cout << "Matrix F transposed and multiplied with itself:" << endl;
     matrixF->multiply(matrixF->transpose())->print();
 
-    cout << "Matrix A raised to power 15:" << endl;
-    matrixA->power(15)->print();
+    cout << "Matrix A raised to power 100:" << endl;
+    matrixA->power(100)->print();
     
     return 0;
 }

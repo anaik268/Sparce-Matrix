@@ -3,7 +3,7 @@
 
 #include "List2D.h"
 #include "ListEntry.h"
-/*
+
 class Array2DList : public List2D {
 
 private:
@@ -27,5 +27,5 @@ public:
 	
 	void insertValueAt(int, int, int);
 };
-*/
+
 #endif
