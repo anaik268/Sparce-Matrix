@@ -7,7 +7,9 @@
 class Array2DList : public List2D {
 
 private:
-    ListEntry* rowHeaders;
+    ListEntry** container;
+    int containerCount = 0;
+    int containerCapacity = 10;
 
 public:
     Array2DList();
@@ -19,13 +21,15 @@ public:
 	ListEntry* firstRowEntry(int);
 	ListEntry* firstColEntry(int);
 	
-	ListEntry* nextRowEntry(const ListEntry*);
-	ListEntry* nextColEntry(const ListEntry*);
+	ListEntry* nextRowEntry(ListEntry*);
+	ListEntry* nextColEntry(ListEntry*);
 	
-	bool isLastEntryInRow(const ListEntry*);
-	bool isLastEntryInCol(const ListEntry*);
+	bool isLastEntryInRow(ListEntry*);
+	bool isLastEntryInCol(ListEntry*);
 	
 	void insertValueAt(int, int, int);
+    void increaseContainerSize();
+    void printArray();
 };
 
 #endif

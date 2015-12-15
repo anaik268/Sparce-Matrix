@@ -1,11 +1,13 @@
 #include "SparseMatrix.h"
 #include "ListEntry.h"
+#include "Array2DList.h"
 #include <iostream>
 #include <sstream>
 #include <vector>
 
 SparseMatrix::SparseMatrix(int m, int n) {
-	this->list = new ArrayOfLists2DList(m);
+//	this->list = new ArrayOfLists2DList(m);
+    this->list = new Array2DList();
     this->m = m;
     this->n = n;
     
@@ -34,7 +36,8 @@ SparseMatrix::SparseMatrix(const string& str) {
             this->n = std::stoi(col);
         }
     }
-    this->list = new ArrayOfLists2DList(m);
+//    this->list = new ArrayOfLists2DList(m);
+    this->list = new Array2DList();
     for (int i = 0; i < eachItem.size(); i++)
     {
         token = eachItem[i];
@@ -97,98 +100,6 @@ void SparseMatrix::printRowWise() {
         std::cout << std::endl;
     }
 }
-/*
-void SparseMatrix::print(){
-    ListEntry* head;
-    for(int i = 1; i <= m; i++)
-    {
-        if(m > 6 && i == 4)
-        {
-            std::cout << "    ......." << std::endl;
-            i = m-3;
-            continue;
-        }
-        int curCol = 1;
-        head = this->list->firstRowEntry(i);
-        std::cout << "|";
-        //check first if row is empty
-        if(this->list->rowEmpty(i))
-        {
-            while(curCol <= n)
-            {
-                if(n > 6 && curCol == 4)
-                {
-                    std::cout << " ...";
-                    curCol = n-2;
-                    continue;
-                }
-                else {
-                    std::cout << " 0";
-                    curCol++;
-                }
-                
-            }
-            std::cout << " |\n";
-            continue;
-        }
-        while(head != NULL)
-        {
-            if(n > 6 && curCol == 4)
-            {
-                std::cout << " ...";
-                curCol = n-2;
-                continue;
-            }
-            if(this->list->isLastEntryInRow(head))
-            {
-                while(curCol < head->getCol())
-                {
-                    std::cout << " 0";
-                    curCol++;
-                }
-                std::cout << " " << head->getValue();
-                curCol++;
-                while(curCol <= n)
-                {
-                    std::cout << " 0";
-                    curCol++;
-                }
-                head = this->list->nextRowEntry(head);
-            }
-            else if(curCol < head->getCol())
-            {
-                while(curCol < head->getCol() && curCol != 3)
-                {
-                    std::cout << " 0";
-                    curCol++;
-                }
-                if(curCol == 3)
-                {
-                    std::cout << " 0";
-                    curCol++;
-                    continue;
-                }
-                std::cout << " " << head->getValue();
-                curCol++;
-                head = this->list->nextRowEntry(head);
-            }
-            else if(curCol > head->getCol())
-            {
-                head = this->list->nextRowEntry(head);
-            }
-            else
-            {
-                std::cout << " " << head->getValue();
-                curCol++;
-                head = this->list->nextRowEntry(head);
-            }
-            
-        }
-
-        std::cout << " |" << std::endl;
-    }
-}
- */
 
 void SparseMatrix::print(){
     ListEntry* head;
@@ -559,5 +470,9 @@ SparseMatrix* SparseMatrix::transpose() const {
     }
     
     return tempMatrix;
+}
+
+void SparseMatrix::printTest(){
+    this->list->printArray();
 }
 

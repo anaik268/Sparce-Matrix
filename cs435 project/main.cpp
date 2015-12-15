@@ -10,6 +10,7 @@
 #include <string>
 #include <ctime>
 #include "ArrayOfLists2DList.h"
+#include "Array2DList.h"
 #include "SparseMatrix.h"
 
 using namespace std;
@@ -90,7 +91,7 @@ int main(int argc, const char * argv[]) {
         }
     }
     
-
+    
     //Performing the tests:
     //
     //TEST 1: print each value rowWise
@@ -116,6 +117,14 @@ int main(int argc, const char * argv[]) {
     matrixB->print();
     cout << "\nMatrix C:" << endl;
     matrixC->print();
+    
+    cout << "Matrix A:" << endl;
+    matrixA->printTest();
+    cout << "\nMatrix B:" << endl;
+    matrixB->printTest();
+    cout << "\nMatrix C:" << endl;
+    matrixC->printTest();
+    
     cout << "\nMatrix D:" << endl;
     matrixD->print();
     cout << "\nMatrix E:" << endl;
@@ -228,7 +237,6 @@ int main(int argc, const char * argv[]) {
     cout << endl;
 
     
-    
 //    Multiply Matrix A with itself, Matrix E with itself, and Matrix G with itself.
     cout << "Multiply matrix A with itself:" << endl;
     matrixA->multiply(matrixA)->print();
@@ -236,7 +244,6 @@ int main(int argc, const char * argv[]) {
     matrixE->multiply(matrixE)->print();
 //    cout << "Multiply matrix G with itself:" << endl;
 //    matrixG->multiply(matrixG)->print();
-    
     
 //    For Matrices A, E, and G raise each matrix to the power of 5, 25, 100 using power(). Print the result for each.
     cout << "Matrix A raised to power 5:" << endl;
