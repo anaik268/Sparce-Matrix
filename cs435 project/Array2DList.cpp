@@ -198,10 +198,3 @@ void Array2DList::increaseContainerSize(){
     }
     delete [] tempArray;
 }
-
-void Array2DList::printArray(){
-    for(int i = 0; i < containerCount; i++)
-    {
-        std::cout << "row: " << container[i]->getRow() << " col: " << container[i]->getCol()<< " value: " << container[i]->getValue() << std::endl;
-    }
-}

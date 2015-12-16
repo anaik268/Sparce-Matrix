@@ -29,7 +29,6 @@ public:
 	
 	void insertValueAt(int, int, int);
     void increaseContainerSize();
-    void printArray();
 };
 
 #endif

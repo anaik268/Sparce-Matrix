@@ -1,13 +1,14 @@
 #include "SparseMatrix.h"
 #include "ListEntry.h"
 #include "Array2DList.h"
+#include "ArrayOfLists2DList.h"
 #include <iostream>
 #include <sstream>
 #include <vector>
 
 SparseMatrix::SparseMatrix(int m, int n) {
-//	this->list = new ArrayOfLists2DList(m);
-    this->list = new Array2DList();
+	this->list = new ArrayOfLists2DList(m);
+//    this->list = new Array2DList();
     this->m = m;
     this->n = n;
     
@@ -36,8 +37,8 @@ SparseMatrix::SparseMatrix(const string& str) {
             this->n = std::stoi(col);
         }
     }
-//    this->list = new ArrayOfLists2DList(m);
-    this->list = new Array2DList();
+    this->list = new ArrayOfLists2DList(m);
+//    this->list = new Array2DList();
     for (int i = 0; i < eachItem.size(); i++)
     {
         token = eachItem[i];
@@ -471,8 +472,3 @@ SparseMatrix* SparseMatrix::transpose() const {
     
     return tempMatrix;
 }
-
-void SparseMatrix::printTest(){
-    this->list->printArray();
-}
-

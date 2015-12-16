@@ -22,7 +22,6 @@ public:
 	virtual bool isLastEntryInCol(ListEntry*) = 0;
 
 	virtual void insertValueAt(int, int, int) = 0;
-    virtual void printArray() = 0;
 };
 
 #endif

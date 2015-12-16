@@ -23,8 +23,6 @@ public:
     void printRowWise();
     void setM(int);
     void setN(int);
-    void printTest();
-    
     
 	bool equals(const SparseMatrix*) const;
 	SparseMatrix* scalarMultiply(const int) const;

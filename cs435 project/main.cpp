@@ -95,6 +95,7 @@ int main(int argc, const char * argv[]) {
     //Performing the tests:
     //
     //TEST 1: print each value rowWise
+    clock_t printTimeBegin = clock();
     cout << "Matrix A Row wise:" << endl;
     matrixA->printRowWise();
     cout << "\nMatrix B Row wise:" << endl;
@@ -109,7 +110,9 @@ int main(int argc, const char * argv[]) {
     matrixF->printRowWise();
     cout << "\nMatrix G Row wise:" << endl;
     matrixG->printRowWise();
+    clock_t printTimeEnd = clock();
     
+    clock_t printMatrixTimeBegin = clock();
     //TEST 2: print each matrix itself.
     cout << "Matrix A:" << endl;
     matrixA->print();
@@ -117,14 +120,6 @@ int main(int argc, const char * argv[]) {
     matrixB->print();
     cout << "\nMatrix C:" << endl;
     matrixC->print();
-    
-    cout << "Matrix A:" << endl;
-    matrixA->printTest();
-    cout << "\nMatrix B:" << endl;
-    matrixB->printTest();
-    cout << "\nMatrix C:" << endl;
-    matrixC->printTest();
-    
     cout << "\nMatrix D:" << endl;
     matrixD->print();
     cout << "\nMatrix E:" << endl;
@@ -133,7 +128,10 @@ int main(int argc, const char * argv[]) {
     matrixF->print();
     cout << "\nMatrix G:" << endl;
     matrixG->print();
+    clock_t printMatrixTimeEnd = clock();
     
+    
+    clock_t scalarMultiplyBegin = clock();
     //test 3: Scalar multiply each matrix by 5
     cout << "Matrix A multiplied by 5:" << endl;
     matrixA->scalarMultiply(5)->print();
@@ -149,7 +147,9 @@ int main(int argc, const char * argv[]) {
     matrixF->scalarMultiply(5)->print();
     cout << "\nMatrix G multiplied by 5:" << endl;
     matrixG->scalarMultiply(5)->print();
+    clock_t scalarMultiplyEnd = clock();
     
+    clock_t equalsMethodBegin = clock();
     //TEST 4: Apply equals pairwise matrix A-g
     cout << "Matrix A equals Matrix A: " << matrixA->equals(matrixA) << endl;
     cout << "Matrix A equals Matrix B: " << matrixA->equals(matrixB) << endl;
@@ -185,8 +185,9 @@ int main(int argc, const char * argv[]) {
     cout << "Matrix F equals Matrix G: " << matrixF->equals(matrixG) << endl;
     
     cout << "Matrix G equals Matrix G: " << matrixG->equals(matrixG) << endl;
+    clock_t equalsMethodEnd = clock();
     
-
+    clock_t addMatrixBegin = clock();
     //TEST 4: Add each matrix itself.
     cout << "Matrix A added to itself:" << endl;
     matrixA->add(matrixA)->print();
@@ -202,7 +203,9 @@ int main(int argc, const char * argv[]) {
     matrixF->add(matrixF)->print();
     cout << "\nMatrix G added to itself:" << endl;
     matrixG->add(matrixG)->print();
+    clock_t addMatrixEnd = clock();
     
+    clock_t subtractMatrixBegin = clock();
     //TEST 5: subtract each matrix itself.
     cout << "Matrix A subtracted to itself:" << endl;
     matrixA->subtract(matrixA)->print();
@@ -218,7 +221,9 @@ int main(int argc, const char * argv[]) {
     matrixF->subtract(matrixF)->print();
     cout << "\nMatrix G subtracted to itself:" << endl;
     matrixG->subtract(matrixG)->print();
+    clock_t subtractMatrixEnd = clock();
     
+    clock_t scalarMultiplyMinus5Begin = clock();
     //test 6: Scalar multiply each matrix by 5 and subtract itself
     cout << "Matrix A subtracted from itself multiplied by 5:" << endl;
     matrixA->scalarMultiply(5)->subtract(matrixA)->print();
@@ -235,8 +240,9 @@ int main(int argc, const char * argv[]) {
     cout << "\nMatrix G subtracted from itself multiplied by 5:" << endl;
     matrixG->scalarMultiply(5)->subtract(matrixG)->print();
     cout << endl;
-
+    clock_t scalarMultiplyMinus5End = clock();
     
+    clock_t multiplyTestBegin = clock();
 //    Multiply Matrix A with itself, Matrix E with itself, and Matrix G with itself.
     cout << "Multiply matrix A with itself:" << endl;
     matrixA->multiply(matrixA)->print();
@@ -244,7 +250,9 @@ int main(int argc, const char * argv[]) {
     matrixE->multiply(matrixE)->print();
 //    cout << "Multiply matrix G with itself:" << endl;
 //    matrixG->multiply(matrixG)->print();
+    clock_t multiplyTestEnd = clock();
     
+    clock_t powerTestBegin = clock();
 //    For Matrices A, E, and G raise each matrix to the power of 5, 25, 100 using power(). Print the result for each.
     cout << "Matrix A raised to power 5:" << endl;
     matrixA->power(5)->print();
@@ -264,7 +272,9 @@ int main(int argc, const char * argv[]) {
 //    matrixE->power(100)->print();
 //    cout << "Matrix G raised to power 100:" << endl;
 //    matrixG->power(100)->print();
+    clock_t powerTestEnd = clock();
     
+    clock_t transposeTestBegin = clock();
 //   Compute the transpose of each matrix and print the result.
     cout << "Matrix A transposed:" << endl;
     matrixA->transpose()->print();
@@ -281,7 +291,9 @@ int main(int argc, const char * argv[]) {
     cout << "Matrix G transposed:" << endl;
     matrixG->transpose()->print();
     cout << endl;
+    clock_t transposeTestEnd = clock();
     
+    clock_t transposeMultiplyBegin = clock();
 //    Multiply each matrix with its transpose and its transpose with itself. Print the result for each.
     cout << "Matrix A transposed and multiplied with itself:" << endl;
     matrixA->multiply(matrixA->transpose())->print();
@@ -293,14 +305,21 @@ int main(int argc, const char * argv[]) {
     matrixD->multiply(matrixD->transpose())->print();
     cout << "Matrix E transposed and multiplied with itself:" << endl;
     matrixE->multiply(matrixE->transpose())->print();
-
-    matrixF->transpose()->print();
-    cout << endl;
     cout << "Matrix F transposed and multiplied with itself:" << endl;
     matrixF->multiply(matrixF->transpose())->print();
-
-    cout << "Matrix A raised to power 100:" << endl;
-    matrixA->power(100)->print();
+    clock_t transposeMultiplyEnd = clock();
     
+    cout << "Run times using Singly linked list datastructure: " << endl;
+    
+    cout << "Print Row Wise test: " << (double)(printTimeEnd - printTimeBegin) << endl;
+    cout << "Print each matrix: " << (double)(printMatrixTimeEnd - printMatrixTimeBegin) << endl;
+    cout << "Scalar multiply by 5 test: " << (double)(scalarMultiplyEnd - scalarMultiplyBegin) << endl;
+    cout << "Equals method test: " << (double)(equalsMethodEnd - equalsMethodBegin) << endl;
+    cout << "add matrix test: " << (double)(addMatrixEnd - addMatrixBegin) << endl;
+    cout << "subtract matrix test: " << (double)(subtractMatrixEnd - subtractMatrixBegin) << endl;
+    cout << "scalar multiply minus 5 test: " << (double)(scalarMultiplyMinus5End - scalarMultiplyMinus5Begin) << endl;
+    cout << "power function test: " << (double)(powerTestEnd - powerTestBegin) << endl;
+    cout << "Transpose test: " << (double)(transposeTestEnd - transposeTestBegin) << endl;
+    cout << "transpose multiply test begin: " << (double)(transposeMultiplyEnd - transposeMultiplyBegin) << endl;
     return 0;
 }
